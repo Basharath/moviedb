@@ -8,7 +8,7 @@ export default function Search({ movies, query }) {
       <Head>
         <title>MovieDB - searched: {query}</title>
       </Head>
-      <MovieGrid movies={movies} title={`Search results for: ${query}`} />;
+      <MovieGrid movies={movies} title={`Search results for: ${query}`} />
     </>
   );
 }
