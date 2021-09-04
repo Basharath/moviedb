@@ -1,14 +1,14 @@
 /* eslint-disable react/no-array-index-key */
 import Card from './Card';
 
-const Movies = ({ movies, onCardClick }) => {
+const Movies = ({ movies, onCardClick, title }) => {
   const baseImageUrl = process.env.NEXT_PUBLIC_API_BASE_IMAGE_URL;
   const fallBackImageUrl =
     'https://www.peakndt.com/wp-content/uploads/2017/02/No_picture_available.png';
 
   return (
     <>
-      <h2 className='h2'>Most Recent Movies</h2>
+      <h2 className='h2'>{title || 'Most Recent Movies'}</h2>
       {movies.length < 1 && (
         <p className='no-movies'>No movies are found. Try searching again.</p>
       )}

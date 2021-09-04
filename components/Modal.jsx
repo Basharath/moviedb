@@ -30,7 +30,7 @@ export default function Modal({ movie, onClose }) {
         </div>
         <h3 className='h3'>{title}</h3>
         <div className='container'>
-          <img src={image_path} alt={title} />
+          <img src={image_path} alt={title} layout='responsive' />
           <div className='details'>
             <p>
               <span className='bold'>Release date:</span>{' '}
