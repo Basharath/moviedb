@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import debounce from 'lodash.debounce';
 import Image from 'next/image';
 import logo from '../images/logo.svg';
 
@@ -7,12 +8,21 @@ export default function Headers() {
   const [search, setSearch] = useState('');
   const router = useRouter();
 
-  const handleChange = ({ currentTarget }) => {
-    const text = currentTarget.value.toString().replaceAll(' ', '+');
-    setSearch(() => currentTarget.value);
-    if (!text) router.push('/');
-    else router.push(`/search?q=${text}`);
+  // data gets passed from the debounce function
+  const changeRoute = (data) => {
+    const text = data.toString().trim().replaceAll(' ', '+');
+    if (text) router.push(`/search?q=${text}`);
+    else router.push('/');
   };
+
+  const debounceHandler = useCallback(debounce(changeRoute, 700), []);
+
+  useEffect(() => {
+    debounceHandler(search);
+  }, [search]);
+
+  const handleChange = ({ currentTarget: { value } }) => setSearch(() => value);
+
   const handleClick = () => {
     setSearch('');
     router.push('/');
