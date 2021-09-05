@@ -10,6 +10,6 @@ export const getStaticProps = async () => {
 
   return {
     props: { movies: allMovies },
-    revalidate: 1000,
+    revalidate: 86400,
   };
 };
