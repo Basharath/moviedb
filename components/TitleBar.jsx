@@ -1,6 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import debounce from 'lodash.debounce';
 import Image from 'next/image';
 import logo from '../images/logo.svg';
 
@@ -13,6 +12,15 @@ export default function Headers() {
     const text = data.toString().trim().replaceAll(' ', '+');
     if (text) router.push(`/search?q=${text}`);
     else router.push('/');
+  };
+
+  // debounce function
+  const debounce = (callback, delay) => {
+    let timeOut;
+    return (...args) => {
+      if (timeOut) clearTimeout(timeOut);
+      timeOut = setTimeout(() => callback(...args), delay);
+    };
   };
 
   const debounceHandler = useCallback(debounce(changeRoute, 700), []);
