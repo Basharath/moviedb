@@ -2,7 +2,7 @@
 import Card from './Card';
 
 const Movies = ({ movies, onCardClick, title }) => {
-  const baseImageUrl = process.env.NEXT_PUBLIC_API_BASE_IMAGE_URL;
+  const baseImageUrl = process.env.NEXT_PUBLIC_BASE_IMAGE_URL;
   const fallBackImageUrl =
     'https://www.peakndt.com/wp-content/uploads/2017/02/No_picture_available.png';
 

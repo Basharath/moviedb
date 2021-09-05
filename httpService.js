@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const domain = process.env.NEXT_PUBLIC_API_DOMAIN;
-const key = process.env.NEXT_PUBLIC_MOVIE_DB_API_KEY;
+const domain = process.env.api_domain;
+const key = process.env.api_key;
 const apiUrl = `${domain}/movie/popular?api_key=${key}`;
 const searchUrl = `${domain}/search/movie?api_key=${key}&query=`;
 
