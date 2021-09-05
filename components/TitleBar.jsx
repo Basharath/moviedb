@@ -23,11 +23,6 @@ export default function Headers() {
 
   const handleChange = ({ currentTarget: { value } }) => setSearch(() => value);
 
-  const handleClick = () => {
-    setSearch('');
-    router.push('/');
-  };
-
   return (
     <>
       <div className='titlebar'>
@@ -37,7 +32,7 @@ export default function Headers() {
           className='logo'
           width={152}
           height={40}
-          onClick={handleClick}
+          onClick={() => setSearch('')}
         />
         <div className='search'>
           <i className='fa fa-search' />
