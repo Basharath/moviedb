@@ -26,8 +26,14 @@ export default function Headers() {
   const debounceHandler = useCallback(debounce(changeRoute, 700), []);
 
   useEffect(() => {
+    const query = router.query.q;
+    if(query) setSearch(query);
+  }, []);
+
+  useEffect(() => {
     debounceHandler(search);
   }, [search]);
+
 
   const handleChange = ({ currentTarget: { value } }) => setSearch(() => value);
 
